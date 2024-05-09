@@ -1,7 +1,7 @@
 import { Scroll } from "@react-three/drei";
-import Ad from "./Landing/ad";
-import Posts from "./Landing/posts";
-import Sidearea from "./Landing/sidearea";
+import Ad from "@/app/components/home/experience/landing/ad";
+import Posts from "@/app/components/home/experience/landing/posts";
+import SideArea from "@/app/components/home/experience/landing/sidearea";
 
 export default function Landing () {
     return (
@@ -19,7 +19,7 @@ export default function Landing () {
                 <Posts />
               </div>
               <div className="basis-2/6">
-                <Sidearea />
+                <SideArea />
               </div>
             </section>
         </article>

@@ -93,12 +93,14 @@ export default function Comments(props: { postId: string }) {
             await getCommentsByPost()
         }
 
-        setTimeout(() => {
+        const timer = setTimeout(() => {
             setError(false)
             setSuccess(false)
         }, 3500)
 
         fetchData()
+
+        return () => clearTimeout(timer)
     }, [success, error])
 
     return (

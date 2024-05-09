@@ -1,6 +1,6 @@
-import Ad from "@/app/Components/Home/Experience/Landing/ad";
-import Sidearea from "@/app/Components/Home/Experience/Landing/sidearea";
-import Posts from "@/app/Components/Search/posts";
+import Ad from "@/app/components/home/experience/landing/ad";
+import Sidearea from "@/app/components/home/experience/landing/sidearea";
+import Posts from "@/app/components/search/posts";
 
 export default function PostsBySearch({params}: {
     params: { searchField: string }

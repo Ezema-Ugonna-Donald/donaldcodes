@@ -1,4 +1,4 @@
-import RecentPosts from "./Sidearea/recentPosts";
+import RecentPosts from "./sidearea/recentPosts";
 
 export default function Sidearea() {
     return (

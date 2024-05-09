@@ -3,8 +3,8 @@
 import Link from "next/link"
 import { useState } from "react"
 import Image from "next/image"
-import Menu from "./Navbar/menu"
-import Search from "./Navbar/search"
+import Menu from "@/app/components/navbar/menu"
+import Search from "@/app/components/navbar/search"
 
 export default function Navbar() {
     const [isMenuVisible, setMenuVisible] = useState(false)

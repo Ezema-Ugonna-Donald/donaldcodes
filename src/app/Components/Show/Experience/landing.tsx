@@ -1,7 +1,7 @@
 import { Scroll } from "@react-three/drei";
-import Ad from "./Landing/ad";
-import Posts from "./Landing/posts";
-import Sidearea from "./Landing/sidearea";
+import Ad from "./landing/ad";
+import Posts from "./landing/posts";
+import Sidearea from "./landing/sidearea";
 
 export default function Landing (props: {postId: string}) {
     return (

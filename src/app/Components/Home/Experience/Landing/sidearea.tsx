@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useEffect, useState } from "react";
-import RecentPosts from "./Sidearea/recentPosts";
+import RecentPosts from "@/app/components/home/experience/landing/sidearea/recentPosts";
 import axios from "@/app/(main)/api/axios";
 
 type User = {
@@ -22,7 +22,7 @@ type Category = {
     user: User
 }
 
-export default function Sidearea() {
+export default function SideArea() {
 
     const CATEGORY_URL = "/categories"
 

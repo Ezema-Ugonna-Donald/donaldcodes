@@ -27,7 +27,7 @@ export default function RootLayout({
           <Navbar />
           {children}
         </div>
-        <footer className="w-full h-full bg-[#6B7400]">&copy; Copyright, All rights Reserved. 2024</footer>
+        <footer className="w-full h-full p-3 bg-[#6B7400]">&copy; Copyright, All rights Reserved. {new Date().getFullYear()}</footer>
       </body>
     </html>
   );

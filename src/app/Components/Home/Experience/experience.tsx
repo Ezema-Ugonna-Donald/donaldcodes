@@ -1,7 +1,7 @@
 "use client"
 import { OrbitControls, ScrollControls, Stars } from "@react-three/drei";
 import { Planet } from "../../../planet";
-import Landing from "./landing";
+import Landing from "@/app/components/home/experience/landing";
 
 export default function Experience () {
     return (

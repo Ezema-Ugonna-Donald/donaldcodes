@@ -1,10 +1,8 @@
 "use client"
-import Ad from "@/app/Components/Show/Experience/Landing/ad"
-import Posts from "@/app/Components/Show/Experience/Landing/posts"
-import Sidearea from "@/app/Components/Home/Experience/Landing/sidearea"
-import Experience from "@/app/Components/Show/Experience/experience"
-import { Canvas } from "@react-three/fiber"
-import Comments from "@/app/Components/Show/Comments"
+import Ad from "@/app/components/home/experience/landing/ad"
+import Posts from "@/app/components/show/experience/landing/posts"
+import Sidearea from "@/app/components/home/experience/landing"
+import Comments from "@/app/components/show/comments"
 
 export default function Show({params}: {
     params: { postId: string }

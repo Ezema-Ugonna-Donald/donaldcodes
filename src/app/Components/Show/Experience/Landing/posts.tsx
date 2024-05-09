@@ -4,7 +4,7 @@ import axios from "@/app/(main)/api/axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import parse from "html-react-parser"
-import Pagination from "./Post/pagination";
+import Pagination from "./post/pagination";
 
 type User = {
     id: number

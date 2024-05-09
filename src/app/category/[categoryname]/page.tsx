@@ -1,6 +1,6 @@
-import Posts from "@/app/Components/Category/posts"
+import Posts from "@/app/Components/category/posts"
 import Ad from "@/app/Components/Home/Experience/Landing/ad"
-import Sidearea from "@/app/Components/Home/Experience/Landing/sidearea"
+import Sidearea from "@/app/components/home/experience/landing/sidearea"
 
 export default function PostsByCategories({params}: {
     params: { categoryname: string }
