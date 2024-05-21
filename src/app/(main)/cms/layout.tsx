@@ -1,0 +1,31 @@
+
+"use client"
+import SideNav from "@/app/(main)/components/cms/sidenav"
+import CMSNavbar from "@/app/(main)/components/cms/navbar"
+import { useState } from "react"
+
+export default function CMSLayout({
+    children
+} : {
+    children : React.ReactNode
+}) {
+    const [sideNavIsVisible, setSideNavIsVisible] = useState(true)
+
+    const handleSetSideNav = () => {
+        setSideNavIsVisible(!sideNavIsVisible)
+    }
+    
+    return (
+        <section className="bg-white h-screen grid grid-cols-4 grid-rows-[0.15fr,1.5fr,0.1fr,0.001fr]">
+            <nav className="col-span-4 bg-[#ec0b43]"><CMSNavbar handleSetSideNav={handleSetSideNav}/></nav>
+            {
+                sideNavIsVisible ?
+                (
+                    <div className="row-span-3 bg-black text-white"><SideNav /></div>
+                ) : null
+            }
+            <main className={sideNavIsVisible ? "col-span-3" : "col-span-4"}>{children}</main>
+            <footer className={sideNavIsVisible ? "col-span-3 w-full h-full p-3 bg-[#6B7400]": "col-span-4 w-full h-full p-3 bg-[#6B7400]"}>&copy; Copyright, All rights Reserved. {new Date().getFullYear()}</footer>
+        </section>
+    )   
+}

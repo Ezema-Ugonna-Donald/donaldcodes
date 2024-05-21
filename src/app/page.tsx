@@ -1,7 +1,6 @@
 "use client"
 import { Canvas } from "@react-three/fiber";
-import Image from "next/image";
-import Experience from "./Components/Home/Experience/experience";
+import Experience from "@/app/(main)/components/home/experience/experience";
 
 export default function Home() {
   return (
