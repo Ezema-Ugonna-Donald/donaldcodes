@@ -41,15 +41,30 @@ type Comment = {
     post: Post
 }
 
+type Ad = {
+    id: number
+    user_id: number
+    companyname: string
+    companyEmail: string
+    companyPhone: string
+    companyWebsite: string
+    adImage: string
+    body: string
+    user: User,
+    created_at: string
+    updated_at: string
+}
+
 export default function Dashboard() {
     const [posts, setPosts] = useState<Post[]>([])
     const [approvedComments, setApprovedComments] = useState<Comment[]>([])
-    const [disapprovedComments, setDisapprovedComments] = useState<Comment[]>([])
+    const [ads, setAds] = useState<Ad[]>([])
 
     const POSTS_URL: string = "/posts/view"
     const POST_DELETE_URL: string = "/posts"
     const COMMENT_APPROVED_URL: string = "/comments/all/approved"
     const COMMENT_DISAPPROVED_URL: string = "/comments/all/disapproved"
+    const AD_GET_URL: string = "/ads"
     let no: number = 0
 
     const [currentPage, setCurrentPage] = useState(1)
@@ -111,6 +126,22 @@ export default function Dashboard() {
         }
     }
 
+    const getAds = async () => {
+        try 
+        {
+            const response = await axios.get(AD_GET_URL)
+
+            if (response?.status === 200)
+            {
+                setAds(response.data)
+            }
+        } 
+        catch (error) 
+        {
+            console.error(error)   
+        }
+    }
+
     const deletePost = async (id: number) => {
         try
         {
@@ -149,6 +180,7 @@ export default function Dashboard() {
         const fetchData = async () => {
             await getAllPosts()
             await getAllApprovedComments()
+            await getAds()
           // console.log("posets", posts)
         }
     
@@ -168,7 +200,7 @@ export default function Dashboard() {
                 </div>
                 <div className="shadow-lg rounded-xl p-7 text-center">
                     <div className="flex justify-center"><span className="mt-1.5 mr-4"><FaAd size={19} /></span><span className="text-xl font-bold">No of Ads</span></div>
-                    <div className="text-center text-3xl font-bold mt-10">{disapprovedComments.length}</div>
+                    <div className="text-center text-3xl font-bold mt-10">{ads.length}</div>
                 </div>
             </div>
             <div className="mt-8">

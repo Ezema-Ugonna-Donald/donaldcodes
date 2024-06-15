@@ -1,24 +1,53 @@
 "use client"
 import { NextPage } from "next";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { FaAt, FaLock } from "react-icons/fa";
+import axios from "@/app/(main)/api/axios";
+import { useRouter } from "next/navigation";
 
-interface Props {}
 
-const Login : NextPage = (props): JSX.Element => {
-    const [error, setError] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+const Login = () => {
+    const { push } = useRouter()
+    const [error, setError] = useState<boolean>(false)
+    const [email, setEmail] = useState<string>("")
+    const [password, setPassword] = useState<string>("")
+
+    const LOGIN_URL: string = "/users/login"
+
+    const adminLogin = async (e: FormEvent<HTMLFormElement>) => {
+        try 
+        {
+            const response = await axios.post(LOGIN_URL, {
+                email: email,
+                password: password
+            })
+
+            if (response?.status === 200)
+            {
+                setError(false)
+
+                push("/cms")
+            }
+            else
+            {
+                setError(true)
+            }
+        } 
+        catch (error) 
+        {
+            
+        }
+    }
 
     return (
         <section className="bg-black pb-24">
             <div className="m-auto mt-20 w-1/2 py-5 px-4 text-black bg-[#E4EB15]">
-                <form>
+                <form method="post" onSubmit={(e: FormEvent<HTMLFormElement>) => adminLogin(e)}>
                     <div className="mb-5">
                         <h1 className="text-xl">Login</h1>
                         <h2>Enter your Credentials</h2>
                     </div>
-                    {error ? (<div className="bg-red-500 p-4 mx-2 text-black my-5">Failed to submit comment</div>): null}
+                    {error ? (<div className="bg-red-500 p-4 mx-2 text-black my-5">Incorrect username/password</div>): null}
                     <div className="p-4 mx-2 bg-[#ec0b43]">
                         <div className="w-full mb-2">
                             <label htmlFor="email" className="text-left block text-white">Email: </label>

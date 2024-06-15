@@ -9,12 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.577.0",
+    "@ckeditor/ckeditor5-build-classic": "^41.4.2",
+    "@ckeditor/ckeditor5-react": "^6.3.0",
     "@cloudinary/react": "^1.13.0",
     "@cloudinary/url-gen": "^1.19.0",
     "@react-three/drei": "^9.105.1",
     "@react-three/fiber": "^8.16.1",
     "@types/three": "^0.163.0",
     "axios": "^1.6.8",
+    "ckeditor5-custom-build": "file:ckeditor5",
+    "dotenv": "^16.4.5",
     "gsap": "^3.12.5",
     "html-react-parser": "^5.1.10",
     "next": "^14.2.3",

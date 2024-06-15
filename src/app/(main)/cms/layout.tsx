@@ -16,7 +16,7 @@ export default function CMSLayout({
     }
     
     return (
-        <section className="bg-white h-screen grid grid-cols-4 grid-rows-[0.15fr,1.5fr,0.1fr,0.001fr]">
+        <section className="bg-white h-screen grid grid-cols-4 grid-rows-[0.15fr,1.5fr,0.1fr,0.001fr] overflow-hidden">
             <nav className="col-span-4 bg-[#ec0b43]"><CMSNavbar handleSetSideNav={handleSetSideNav}/></nav>
             {
                 sideNavIsVisible ?
@@ -24,7 +24,7 @@ export default function CMSLayout({
                     <div className="row-span-3 bg-black text-white"><SideNav /></div>
                 ) : null
             }
-            <main className={sideNavIsVisible ? "col-span-3" : "col-span-4"}>{children}</main>
+            <main className={sideNavIsVisible ? "col-span-3 overflow-scroll" : "col-span-4"}>{children}</main>
             <footer className={sideNavIsVisible ? "col-span-3 w-full h-full p-3 bg-[#6B7400]": "col-span-4 w-full h-full p-3 bg-[#6B7400]"}>&copy; Copyright, All rights Reserved. {new Date().getFullYear()}</footer>
         </section>
     )   
