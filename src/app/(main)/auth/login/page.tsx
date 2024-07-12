@@ -15,6 +15,9 @@ const Login = () => {
     const LOGIN_URL: string = "/users/login"
 
     const adminLogin = async (e: FormEvent<HTMLFormElement>) => {
+
+        e.preventDefault()
+
         try 
         {
             const response = await axios.post(LOGIN_URL, {
