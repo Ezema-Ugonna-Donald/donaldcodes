@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { FaAd, FaClipboard, FaCommentSlash, FaComments, FaEdit, FaTrash } from "react-icons/fa";
 import axios from "@/app/(main)/api/axios";
 import Pagination from "@/app/(main)/components/show/post/pagination";
+import useAxiosPrivate from "@/app/(main)/hooks/useAxiosPrivate"
 import parse from "html-react-parser"
 import Link from "next/link";
 
@@ -60,6 +61,8 @@ export default function Dashboard() {
     const [approvedComments, setApprovedComments] = useState<Comment[]>([])
     const [ads, setAds] = useState<Ad[]>([])
 
+    
+
     const POSTS_URL: string = "/posts/view"
     const POST_DELETE_URL: string = "/posts"
     const COMMENT_APPROVED_URL: string = "/comments/all/approved"
@@ -71,6 +74,8 @@ export default function Dashboard() {
     const [postsPerPage, setPostsPerPage] = useState(4)
 
     const options: any = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+
+    const axiosPrivate = useAxiosPrivate()
 
     const paginationAttributes = {
         currentPage,
@@ -145,7 +150,7 @@ export default function Dashboard() {
     const deletePost = async (id: number) => {
         try
         {
-            const response = await axios.delete(`${POST_DELETE_URL}/${id}`)
+            const response = await axiosPrivate.delete(`${POST_DELETE_URL}/${id}`)
 
             if (response?.status === 200)
             {
@@ -222,8 +227,8 @@ export default function Dashboard() {
                                 return (
                                     <tr key={post.id}>
                                         <td className="p-4">{no + indexOfFirstPost}</td>
-                                        <td className="p-4"><img src="/assets/uploads/neoyokio.png" className="h-[100px] w-[200px]" alt="" /></td>
-                                        <td className="p-4 w-80">{parse(post.body.substring(0, 100))}...</td>
+                                        <td className="p-4"><img src={post.post_image} className="h-[100px] w-[200px]" alt="" /></td>
+                                        <td className="p-4 w-80"><span>{parse(post.body.substring(0, 100))}</span><span>...</span></td>
                                         <td className="p-4">{new Date(post.created_at).toLocaleDateString("en-US", options)}</td>
                                         <td className="p-4 flex align-middle pt-14"><Link href={`/cms/edit-post/${post.id}`} className="mr-3"><FaEdit color="#4b6dca" /></Link><span className="cursor-pointer" onClick={() => deletePost(post.id)}><FaTrash color="#f76186" /></span></td>
                                     </tr>

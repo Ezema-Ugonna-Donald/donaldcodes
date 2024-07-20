@@ -1,18 +1,37 @@
 "use client"
-import { NextPage } from "next";
-import { FormEvent, useState } from "react";
+
+import { FormEvent, useState, useEffect } from "react";
 import { FaAt, FaLock } from "react-icons/fa";
 import axios from "@/app/(main)/api/axios";
 import { useRouter } from "next/navigation";
+import useAuth from "@/app/(main)/hooks/useAuth";
 
+type User = {
+    id: number
+    name: string
+    email: string
+    password: string
+    created_by: string
+    created_at: string
+}
 
 const Login = () => {
     const { push } = useRouter()
     const [error, setError] = useState<boolean>(false)
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
+    const [user, setUser] = useState<User>({
+        id: 0,
+        name: "",
+        email: "",
+        password: "",
+        created_by: "",
+        created_at: ""
+    }) 
 
     const LOGIN_URL: string = "/users/login"
+
+    const { auth, setAuth } = useAuth()
 
     const adminLogin = async (e: FormEvent<HTMLFormElement>) => {
 
@@ -28,6 +47,24 @@ const Login = () => {
             if (response?.status === 200)
             {
                 setError(false)
+                
+                setUser(response.data.user)
+
+                // console.log(response.data.accessToken)
+                const userId = user.id
+                const email = user.email
+                const name = user.name
+                const token = response.data?.accessToken
+
+                // console.log("loggg")
+                
+                // setAuth({ userId, email, name, token })
+                // console.log("logged in")
+
+                window.localStorage.setItem("token", response.data.accessToken)
+                window.localStorage.setItem("user_id", user.id.toString())
+                window.localStorage.setItem("email", user.email)
+                window.localStorage.setItem("name", user.name)
 
                 push("/cms")
             }
@@ -38,9 +75,16 @@ const Login = () => {
         } 
         catch (error) 
         {
-            
+            console.error(error)
         }
     }
+
+    useEffect(() => {
+        if (auth?.token !== undefined || window.localStorage.getItem("token") !== null)
+        {
+            push("/cms")
+        }
+    }, [])
 
     return (
         <section className="bg-black pb-24">

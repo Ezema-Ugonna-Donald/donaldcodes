@@ -5,6 +5,8 @@ import axios from "@/app/(main)/api/axios"
 import { CKEditor } from "@ckeditor/ckeditor5-react"
 import Editor from "../../../../../../ckeditor5/build/ckeditor";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3"
+import useAuth from "@/app/(main)/hooks/useAuth"
+import useAxiosPrivate from "@/app/(main)/hooks/useAxiosPrivate"
 
 type User = {
     id: number
@@ -77,6 +79,9 @@ export default function EditPost({params}: {
         no_approved_comments: 0,
         created_at: ""
     })
+
+    const axiosPrivate = useAxiosPrivate()
+    const { auth } = useAuth()
 
     const getPostById = async (id: number) => {
         try
@@ -157,8 +162,8 @@ export default function EditPost({params}: {
     const updatePost = async (title: string, category: string, postImageUrl: string, body: string) => {
         try 
         {
-            const response = await axios.patch(`${POST_UPDATE_URL}/${params.postId}`, {
-                user_id: 5,
+            const response = await axiosPrivate.patch(`${POST_UPDATE_URL}/${params.postId}`, {
+                user_id: auth?.userId == undefined ? window.localStorage.getItem("user_id") : auth?.userId,
                 title: title,
                 categories: category,
                 post_image: postImageUrl,

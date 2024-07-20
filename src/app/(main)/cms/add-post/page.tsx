@@ -5,6 +5,9 @@ import axios from "@/app/(main)/api/axios"
 import { CKEditor } from "@ckeditor/ckeditor5-react"
 import Editor from "../../../../../ckeditor5/build/ckeditor";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3"
+import useAxiosPrivate from "@/app/(main)/hooks/useAxiosPrivate";
+import useAuth from "@/app/(main)/hooks/useAuth";
+import { FaWindowMinimize } from "react-icons/fa";
 
 type User = {
     id: number
@@ -45,6 +48,9 @@ export default function AddPost() {
     const POST_URL: string = "/posts/add-post"
 
     const [categories, setCategories] = useState<Category[]>([])
+
+    const axiosPrivate = useAxiosPrivate()
+    const { auth } = useAuth()
 
     const getCategories = async () => {
         try
@@ -102,8 +108,8 @@ export default function AddPost() {
     const uploadPost = async (title: string, category: string, postImageUrl: string, body: string) => {
         try 
         {
-            const response = await axios.post(POST_URL, {
-                user_id: 5,
+            const response = await axiosPrivate.post(POST_URL, {
+                user_id: auth?.userId == undefined ? window.localStorage.getItem("user_id") : auth?.userId,
                 title: title,
                 categories: category,
                 post_image: postImageUrl,

@@ -4,6 +4,8 @@ import { FormEvent, useEffect, useState } from "react"
 import axios from "@/app/(main)/api/axios"
 import Link from "next/link"
 import { FaEdit, FaTrash } from "react-icons/fa"
+import useAxiosPrivate from "@/app/(main)/hooks/useAxiosPrivate"
+import useAuth from "@/app/(main)/hooks/useAuth"
 
 type User = {
     id: number
@@ -34,6 +36,9 @@ export default function ManageCategories() {
     
     const options: any = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
 
+    const axiosPrivate = useAxiosPrivate()
+    const { auth } = useAuth()
+
     let no = 0
 
     const addCategory = async (e: FormEvent<HTMLFormElement>, category: string) => {
@@ -41,8 +46,8 @@ export default function ManageCategories() {
 
         try 
         {
-            const response = await axios.post(CATEGORY_ADD_URL, {
-                user_id: 5,
+            const response = await axiosPrivate.post(CATEGORY_ADD_URL, {
+                user_id: auth?.userId == undefined ? window.localStorage.getItem("user_id") : auth?.userId,
                 categoryname: category
             })
 
@@ -84,7 +89,7 @@ export default function ManageCategories() {
     const deleteCategory = async (id: number) => {
         try
         {
-            const response = await axios.delete(`${CATEGORY_URL}/${id}`)
+            const response = await axiosPrivate.delete(`${CATEGORY_URL}/${id}`)
 
             if (response?.status === 200)
             {

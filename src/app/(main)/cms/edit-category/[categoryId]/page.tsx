@@ -3,6 +3,7 @@
 import { FormEvent, useState, useEffect } from "react"
 import axios from "@/app/(main)/api/axios"
 import { useRouter } from "next/navigation"
+import useAxiosPrivate from "@/app/(main)/hooks/useAxiosPrivate"
 
 type User = {
     id: number
@@ -45,10 +46,12 @@ export default function EditCategory({params}: {
         }
     })
 
+    const axiosPrivate = useAxiosPrivate()
+
     const getCategory = async (id: number) => {
         try
         {
-            const response = await axios.get(`${CATEGORY_URL}/${id}`)
+            const response = await axiosPrivate.get(`${CATEGORY_URL}/${id}`)
 
             if (response?.status === 200)
             {
@@ -66,7 +69,7 @@ export default function EditCategory({params}: {
         e.preventDefault()
         try 
         {
-            const response = await axios.patch(`${CATEGORY_URL}/${params.categoryId}`, {
+            const response = await axiosPrivate.patch(`${CATEGORY_URL}/${params.categoryId}`, {
                 categoryname: categoryname
             })
 

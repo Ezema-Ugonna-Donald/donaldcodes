@@ -21,6 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname()
+  // const jwtToken = localStorage.getItem("token")
 
   return (
     <html lang="en">
@@ -28,7 +29,7 @@ export default function RootLayout({
         <link rel="icon" href="/assets/logo/donaldcodesLogo.jpg" />
       </head>
       <body>
-        <div className="bg-black font-[Lato-Regular]">
+        <div className="bg-black font-[Lato-Regular] overflow-x-hidden">
           { !pathname.includes("/cms") ? (<Navbar />) : null}
           {children}
         </div>

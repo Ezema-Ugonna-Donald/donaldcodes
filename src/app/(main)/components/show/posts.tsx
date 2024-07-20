@@ -74,7 +74,7 @@ export default function Posts(props: {postId: string}) {
               <div className="w-full mb-24 text-[#FDE8E9]" key={post.id}>
                   <h1 className="text-5xl font-[Oswald-Bold] text-left uppercase">{post.title}</h1>
                   <div className="border rounded-md mt-12">
-                    <img src="/assets/uploads/neoyokio.png" className="rounded-md" alt="" />
+                    <img src={post.post_image} className="rounded-md" alt="" />
                   </div>
                   <div className="flex justify-between">
                     <div className="mt-4 text-left">

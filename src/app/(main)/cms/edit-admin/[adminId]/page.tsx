@@ -1,8 +1,10 @@
 "use client"
 
 import { FormEvent, useEffect, useState } from "react"
-import axios from "@/app/(main)/api/axios"
+// import axios from "@/app/(main)/api/axios"
 import { useRouter } from "next/navigation"
+import useAxiosPrivate from "@/app/(main)/hooks/useAxiosPrivate"
+import useAuth from "@/app/(main)/hooks/useAuth"
 
 type User = {
     id: number
@@ -33,11 +35,13 @@ export default function EditAdmin({ params }: {
     
     const ADMIN_URL: string = "/users/admin"
     // const ADMIN_GET_URL: string = "/users/admin"
+    const axiosPrivate = useAxiosPrivate()
+    const { auth } = useAuth()
 
     const getAdmin = async (id: number) => {
         try 
         {
-            const response = await axios.get(`${ADMIN_URL}/${id}`)
+            const response = await axiosPrivate.get(`${ADMIN_URL}/${id}`)
 
             if (response?.status === 200)
             {
@@ -56,11 +60,11 @@ export default function EditAdmin({ params }: {
 
         try 
         {
-            const response = await axios.patch(`${ADMIN_URL}/${params.adminId}`, {
+            const response = await axiosPrivate.patch(`${ADMIN_URL}/${params.adminId}`, {
                 name: name,
                 email: email,
                 password: password,
-                created_by: "Donald Ezema"
+                created_by: auth?.name == undefined ? window.localStorage.getItem("name") : auth?.name
             })
     
             if (response?.status === 200)

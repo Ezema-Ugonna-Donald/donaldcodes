@@ -96,7 +96,7 @@ export default function Posts(props: {categoryname: string}) {
                   <div className="w-full mb-24 text-[#FDE8E9]" key={post.id}>
                       <h1 className="text-5xl font-[Oswald-Bold] text-left uppercase">{post.title}</h1>
                       <div className="border rounded-md mt-12">
-                      <img src="/assets/uploads/neoyokio.png" className="rounded-md" alt="" />
+                      <img src={post.post_image} className="rounded-md" alt="" />
                       </div>
                       <div className="flex justify-between">
                       <div className="mt-4 text-left">
@@ -109,7 +109,7 @@ export default function Posts(props: {categoryname: string}) {
                       <hr className="border-[#FDE8E9]" />
                       <hr className="border-[#ec0b43]" />
                       <div className="w-full">
-                        <div className="break-words text-base text-left mt-6">{parse(post.body.substring(0, 115))}...</div>
+                        <div className="break-words text-base text-left mt-6"><span>{parse(post.body.substring(0, 115))}</span><span>...</span></div>
                         <Link href={`/view/${post.id}`} className="float-right hover:text-[#E4EB15] hover:underline cursor-pointer">Read More &gt;&gt;</Link>
                       </div>
                   </div>

@@ -7,6 +7,8 @@ import Pagination from "@/app/(main)/components/show/post/pagination";
 import parse from "html-react-parser"
 import Link from "next/link";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import useAxiosPrivate from "@/app/(main)/hooks/useAxiosPrivate";
+import useAuth from "@/app/(main)/hooks/useAuth";
 
 type User = {
     id: number
@@ -67,6 +69,8 @@ export default function ManageAds() {
     const indexOfLastAd = currentPage * adsPerPage
     const indexOfFirstAd = indexOfLastAd - adsPerPage
     const currentAds = ads.slice(indexOfFirstAd, indexOfLastAd)
+    const axiosPrivate = useAxiosPrivate()
+    const { auth } = useAuth()
 
     let no: number = 0
 
@@ -117,8 +121,8 @@ export default function ManageAds() {
     const addAd = async (companyname: string, companyEmail: string, companyPhone: string, companyWebsite: string, adImage: string, adBody: string) => {
         try 
         {
-            const response = await axios.post(AD_CREATE_URL, {
-                user_id: 5,
+            const response = await axiosPrivate.post(AD_CREATE_URL, {
+                user_id: auth?.userId == undefined ? window.localStorage.getItem("user_id") : auth?.userId,
                 companyname: companyname,
                 companyEmail: companyEmail,
                 companyPhone: companyPhone,
@@ -164,7 +168,7 @@ export default function ManageAds() {
     const deleteAd = async (id: number) => {
         try 
         {
-            const response = await axios.delete(`${AD_GET_URL}/${id}`)
+            const response = await axiosPrivate.delete(`${AD_GET_URL}/${id}`)
 
             if (response?.status === 200)
             {

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import axios from "@/app/(main)/api/axios"
 import { FaBomb, FaCheckCircle, FaTrash } from "react-icons/fa"
+import useAxiosPrivate from "@/app/(main)/hooks/useAxiosPrivate"
 
 type Post = {
     id: number
@@ -41,6 +42,8 @@ export default function ViewComments() {
     
     const options: any = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
 
+    const axiosPrivate = useAxiosPrivate()
+
     const getApprovedComments = async () => {
         try 
         {
@@ -60,7 +63,7 @@ export default function ViewComments() {
     const getDisapprovedComments = async () => {
         try 
         {
-            const response = await axios.get(COMMENT_DISAPPROVED_URL)
+            const response = await axiosPrivate.get(COMMENT_DISAPPROVED_URL)
 
             if (response?.status === 200)
             {
@@ -76,7 +79,7 @@ export default function ViewComments() {
     const setApproved = async (id: number) => {
         try 
         {
-            const response = await axios.patch(COMMENT_SET_APPROVED_URL, {
+            const response = await axiosPrivate.patch(COMMENT_SET_APPROVED_URL, {
                 id: id
             })
 
@@ -95,7 +98,7 @@ export default function ViewComments() {
     const setDisapproved = async (id: number) => {
         try 
         {
-            const response = await axios.patch(COMMENT_SET_DISAPPROVED_URL, {
+            const response = await axiosPrivate.patch(COMMENT_SET_DISAPPROVED_URL, {
                 id: id
             })
 
@@ -114,7 +117,7 @@ export default function ViewComments() {
     const deleteComment = async (id: number) => {
         try 
         {
-            const response = await axios.delete(`${COMMENT_DELETE_URL}/${id}`)
+            const response = await axiosPrivate.delete(`${COMMENT_DELETE_URL}/${id}`)
 
             if (response?.status === 200)
             {

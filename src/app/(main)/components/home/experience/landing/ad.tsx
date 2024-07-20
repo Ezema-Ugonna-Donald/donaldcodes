@@ -80,21 +80,21 @@ export default function Ad() {
                     {
                         ads.length > 0 ?
                         (
-                            <div className="flex justify-center">
-                                <div className="border-l-8 border-[#ec0b43] border-t-2 border-b-2">
-                                    <img src={ads[currentAd].adImage} alt="Advert Image" className="w-[50%]" />
+                            <div className=" 2xl:flex xl:flex lg:flex md:flex justify-center">
+                                <div className="border-l-8 border-[#ec0b43] border-t-2 border-b-2 sm:border-r-2">
+                                    <img src={ads[currentAd].adImage} alt="Advert Image" className="2xl:w-[50%] xl:w-[50%] lg:w-[50%] md:w-[50%] w-full sm:h-3/4" />
                                 </div>
-                                <div className="text-[#FDE8E9] w-1/2 p-3 border-t-2 border-b-2 border-[#FDE8E9] align-top bg-transparent">
+                                <div className="text-[#FDE8E9] 2xl:w-1/2 xl:w-1/2 lg:w-1/2 md:w-1/2 w-full p-3 border-t-2 border-b-2 border-[#FDE8E9] sm:border-r-2 sm:border-l-2 align-top bg-transparent">
                                     {ads[currentAd].body}
                                 </div>
-                                <div className="m-0 bg-transparent border px-4 align-top rounded-t-sm">
-                                    <div className="font-[Lato-Heavy] text-[#FDE8E9] mb-3">
+                                <div className="m-0 bg-transparent border p-1 2xl:px-4 xl:px-4 lg:px-4 md:px-4 align-top rounded-t-sm">
+                                    <div className="font-[Lato-Heavy] text-[#FDE8E9] mb-3 text-wrap">
                                         {ads[currentAd].companyname}
                                     </div>
-                                    <p className="align-middle my-4 font-[Lato-Bold]"><span className="flex justify-start align-bottom "><MdEmail size={23} color="#FDE8E9"/><span className=" ml-5 text-[#FDE8E9] align-top">{ads[currentAd].companyEmail}</span></span></p>
-                                    <p className="align-middle my-4 font-[Lato-Bold]"><span className="flex justify-start align-bottom "><FaPhoneAlt size={23} color="#FDE8E9"/><span className=" ml-5 text-[#FDE8E9] align-top">{ads[currentAd].companyPhone}</span></span></p>
+                                    <p className="align-middle my-4 font-[Lato-Bold]"><span className="flex justify-start align-bottom "><MdEmail size={23} color="#FDE8E9"/><span className="2xl:ml-5 xl:ml-5 lg:ml-5 md:ml-5 sm:text-sm text-[#FDE8E9] align-top">{ads[currentAd].companyEmail}</span></span></p>
+                                    <p className="align-middle my-4 font-[Lato-Bold]"><span className="flex justify-start align-bottom "><FaPhoneAlt size={23} color="#FDE8E9"/><span className="2xl:ml-5 xl:ml-5 lg:ml-5 md:ml-5 sm:text-sm text-[#FDE8E9] align-top">{ads[currentAd].companyPhone}</span></span></p>
                                     {
-                                        ads[currentAd].companyWebsite === null ? null : (<Link href={ads[currentAd].companyWebsite} target="_blank" className="align-middle my-4 font-[Lato-Bold]"><span className="flex justify-start align-bottom "><FaGlobe size={23} color="#FDE8E9"/><span className=" ml-5 text-[#FDE8E9] align-top">{ads[currentAd].companyWebsite}</span></span></Link>)
+                                        ads[currentAd].companyWebsite === null ? null : (<Link href={ads[currentAd].companyWebsite} target="_blank" className="align-middle my-4 font-[Lato-Bold]"><span className="flex justify-start align-bottom "><FaGlobe size={23} color="#FDE8E9"/><span className="2xl:ml-5 xl:ml-5 lg:ml-5 md:ml-5 sm:text-sm text-[#FDE8E9] align-top">{ads[currentAd].companyWebsite}</span></span></Link>)
                                     }
                                 </div>
                             </div>

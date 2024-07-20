@@ -5,7 +5,7 @@ import Experience from "@/app/(main)/components/home/experience/experience";
 export default function Home() {
   return (
     <main className="h-[100vh] w-[100vw]">
-      <Canvas camera={{
+      <Canvas className="canvas" camera={{
         fov: 14,
         position: [1.19, 11.56, 1.19]
       }}>

@@ -7,9 +7,9 @@ export default function Experience () {
     return (
         <>
             <ambientLight intensity={5} />
-            <OrbitControls enableZoom={false} />
+            {/* <OrbitControls enabled={false} enableZoom={false} enableRotate={false} /> */}
             <Stars />
-            <ScrollControls pages={7.5} damping={0.25}>
+            <ScrollControls enabled={true} pages={7.5} damping={0.25}>
                 <Landing />
                 <Planet  />
             </ScrollControls>

@@ -63,7 +63,7 @@ export default function RecentPosts() {
             posts.map(post => (
                 <Link href={`/view/${post.id}`} className="flex items-center cursor-pointer hover:text-[#ec0b43] mb-4" key={post.id}>
                     <div className="basis-1/3">
-                        <img src="/assets/uploads/neoyokio.png" alt="" />
+                        <img src={post.post_image} alt="" />
                     </div>
                     <div className="basis-2/3 ml-3">
                         <div className="block">

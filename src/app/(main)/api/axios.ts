@@ -2,7 +2,14 @@ import axios from "axios"
 
 const BASE_URL = "http://localhost:4000/v1/api/"
 
+// const jwtToken = localStorage.getItem("token")
+
 export default axios.create({
     baseURL: BASE_URL,
-    headers: { "Content-Type": "application/json"}
+    headers: { "Content-Type": "application/json" }
+})
+
+export const axiosPrivate = axios.create({
+    baseURL: BASE_URL,
+    headers: { "Content-Type": "application/json" }
 })

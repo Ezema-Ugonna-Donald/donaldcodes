@@ -4,6 +4,8 @@ import { FormEvent, useEffect, useState } from "react"
 import axios from "@/app/(main)/api/axios"
 import Link from "next/link"
 import { FaEdit, FaTrash } from "react-icons/fa"
+import useAxiosPrivate from "@/app/(main)/hooks/useAxiosPrivate"
+import useAuth from "@/app/(main)/hooks/useAuth"
 
 type User = {
     id: number
@@ -30,6 +32,8 @@ export default function ManageAdmins() {
     let no: number = 0
     
     const options: any = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+    const axiosPrivate = useAxiosPrivate()
+    const { auth } = useAuth()
 
     const addAdmin = async (e: FormEvent<HTMLFormElement>) => {
 
@@ -37,11 +41,11 @@ export default function ManageAdmins() {
 
         try 
         {
-            const response = await axios.post(ADMIN_URL, {
+            const response = await axiosPrivate.post(ADMIN_URL, {
                 name: name,
                 email: email,
                 password: password,
-                created_by: "Donald Ezema"
+                created_by: auth?.name == undefined ? window.localStorage.getItem("name") : auth?.name
             })
     
             if (response?.status === 201)
@@ -65,7 +69,7 @@ export default function ManageAdmins() {
     const getAdmins = async () => {
         try
         {
-            const response = await axios.get(ADMIN_GET_URL)
+            const response = await axiosPrivate.get(ADMIN_GET_URL)
 
             if (response?.status === 200)
             {
@@ -81,7 +85,7 @@ export default function ManageAdmins() {
     const deleteAdmin = async (id: number) => {
         try 
         {
-            const response = await axios.delete(`${ADMIN_DELETE_URL}/${id}`)
+            const response = await axiosPrivate.delete(`${ADMIN_DELETE_URL}/${id}`)
 
             if (response?.status === 200)
             {

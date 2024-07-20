@@ -37,3 +37,9 @@ body, html
     font-family: Oswald-Bold;
     src: url("/assets/fonts/oswald/Oswald-Bold.ttf");
 }
+
+/* .canvas
+{
+    overflow-y: scroll;
+    touch-action: touch !important;
+} */
