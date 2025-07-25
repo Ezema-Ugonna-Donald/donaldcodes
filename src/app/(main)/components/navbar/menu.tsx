@@ -67,7 +67,7 @@ export default function Menu({isMenuVisible}: {
                             <Link href="/" className="sm:block p-[1%] mr-[10%] basis-1/4">
                                 Home
                             </Link>
-                            <Link href="" className="sm:block p-[1%] mr-[10%] basis-1/4">
+                            <Link href="/games/hotplates" className="sm:block p-[1%] mr-[10%] basis-1/4">
                                 Games
                             </Link>
                             <Link onClick={() => setCategoriesVisible(!isCategoriesVisible)} href="" className="sm:block p-[1%] mr-[10%] basis-1/4">

@@ -28,12 +28,12 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/assets/logo/donaldcodesLogo.jpg" />
       </head>
-      <body>
+      <body suppressHydrationWarning={true}>
         <div className="bg-black font-[Lato-Regular] overflow-x-hidden">
           { !pathname.includes("/cms") ? (<Navbar />) : null}
           {children}
         </div>
-        { !pathname.includes("/cms") ? (<footer className="w-full h-full p-3 bg-[#6B7400]">&copy; Copyright, All rights Reserved. {new Date().getFullYear()}</footer>) : null }
+        { !pathname.includes("/cms") ? (<footer className="w-full p-3 bg-[#6B7400]">&copy; Copyright, All rights Reserved. {new Date().getFullYear()}</footer>) : null }
       </body>
     </html>
   );
