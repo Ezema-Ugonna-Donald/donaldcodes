@@ -1,4 +1,5 @@
 import { Scene } from "phaser"
+import { gameConfig } from "../game"
 
 // import Config from "../config"
 
@@ -39,18 +40,20 @@ export default class LoadingScene extends Scene
         this.cameras.main.setBackgroundColor ("#000000")
 
         this.barW = Number (window.innerWidth) - (Number (window.innerWidth) * 0.43)
-        this.barH = Number (window.innerHeight) - (Number (window.innerHeight) * 0.92)
+        this.barH = window.innerWidth < 768 ? Number (window.innerHeight) - (Number (window.innerHeight) * 0.95) : Number (window.innerHeight) - (Number (window.innerHeight) * 0.92)
 
         this.bgBar = this.add.graphics ()
-        this.bgBar.setPosition ((window.innerHeight / 2) * 0.847, (window.innerHeight / 2) * 1.227)
+        this.bgBar.setPosition (window.innerWidth < 768 ? (window.innerWidth / 5) * 0.847 : (window.innerWidth / 2) * 0.847, window.innerWidth < 768 ? (window.innerHeight / 2.3) * 0.847 : (window.innerHeight / 2) * 1.227)
         this.bgBar.fillStyle (0xF5F5F5, 1)
         this.bgBar.fillRect (0, 0, this.barW, this.barH)
 
         this.screenW = Number (window.innerWidth)
-        this.screenH = Number (window.innerHeight)
+        this.screenH = Number (window.innerHeight / 2)
+        this.cameras.main.setBounds(0, 0, this.screenW, this.screenH);
+        this.cameras.main.setZoom(1);
 
         this.progressBar = this.add.graphics()
-        this.progressBar.setPosition ((window.innerHeight / 2) * 0.847, (window.innerHeight / 2) * 1.227)
+        this.progressBar.setPosition (window.innerWidth < 768 ? (window.innerWidth / 5) * 0.847 : (window.innerWidth / 2) * 0.847,  window.innerWidth < 768 ? (window.innerHeight / 2.3) * 0.847 : (window.innerHeight / 2) * 1.227)
 
         // listen to the "progress" event
         this.load.on('progress', (value: any) =>
@@ -65,7 +68,7 @@ export default class LoadingScene extends Scene
             if (this.valueText == "100")
             {
                 this.loadImg.destroy ()
-                this.loadImg = this.add.image ((window.innerWidth / 2) * 0.987, (window.innerHeight / 2) * 0.827, "goldPlate")
+                this.loadImg = this.add.image ((window.innerWidth / 2) * 0.847, (window.innerHeight / 2) * 0.527, "goldPlate")
                 this.loadImg.displayWidth = window.innerWidth * 0.15
                 this.loadImg.displayHeight = window.innerWidth * 0.15
             }

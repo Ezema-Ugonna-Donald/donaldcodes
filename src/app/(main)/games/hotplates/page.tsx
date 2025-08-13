@@ -7,7 +7,6 @@ const DynamicComponentWithNoSSR = dynamic(
 
 export default function HotPlates() {
   return (
-    
       <div className="w-full h-full">
         <DynamicComponentWithNoSSR/>
       </div>

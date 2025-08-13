@@ -19,7 +19,7 @@ export default function Search () {
         <div className="">
             <form action={`/search/${searchText}`} method="post">
                 <div>
-                    <img src="/assets/icons/ug-search.png" onMouseOver={() => setSearchVisible(!isSearchVisible)} className="w-10 2xl:w-[2.2em] xl:w-[2.2em] lg:w-[2.2em] md:w-[2.2em] 2xl:h-[2.2em] xl:h-[2.2em] lg:h-[2.2em] md:h-[2.2em] transition-[display] delay-150 hover:mt-11 2xl:hover:w-[2.8em] xl:hover:w-[2.8em] lg:hover:w-[2.8em] md:hover:w-[2.8em] 2xl:hover:h-[2.8em] xl:hover:h-[2.8em] lg:hover:h-[2.8em] md:hover:h-[2.8em] 2xl:hover:rotate-[15deg] xl:hover:rotate-[15deg] lg:hover:rotate-[15deg] md:hover:rotate-[15deg]" alt="Search Icon" />
+                    <img src="/assets/icons/ug-search.png" onClick={() => setSearchVisible(!isSearchVisible)} className="w-10 2xl:w-[2.2em] xl:w-[2.2em] lg:w-[2.2em] md:w-[2.2em] 2xl:h-[2.2em] xl:h-[2.2em] lg:h-[2.2em] md:h-[2.2em] transition-[display] delay-150 hover:mt-11 2xl:hover:w-[2.8em] xl:hover:w-[2.8em] lg:hover:w-[2.8em] md:hover:w-[2.8em] 2xl:hover:h-[2.8em] xl:hover:h-[2.8em] lg:hover:h-[2.8em] md:hover:h-[2.8em] 2xl:hover:rotate-[15deg] xl:hover:rotate-[15deg] lg:hover:rotate-[15deg] md:hover:rotate-[15deg]" alt="Search Icon" />
                 </div>
                 {
                     isSearchVisible ?

@@ -1,4 +1,4 @@
-import { Physics, Scene } from "phaser"
+import { Input, Physics, Scene } from "phaser"
 
 export default class Cauldron extends Physics.Arcade.Sprite
 {
@@ -18,15 +18,18 @@ export default class Cauldron extends Physics.Arcade.Sprite
         this.gamePhysics ()
     }
 
-    update (cursors: any)
+    update (pointer: Input.Pointer)
     {
-        if (cursors) this.setVelocityX ( 357.5 )
+        if (pointer.isDown) this.setVelocityX ( 357.5 )
         else this.setVelocityX ( -357.5 )
+        // this.setVelocityY(0);
     }
 
     gamePhysics ()
     {
         // Cauldron Physics
+        this.setImmovable(true);
+        // this.setGravity(false);
         this.scene.physics.world.setBoundsCollision(true, true, true, true);
         this.setCollideWorldBounds (true)        
     }

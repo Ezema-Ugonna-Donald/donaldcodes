@@ -37,14 +37,14 @@ export default class BadPlate extends Physics.Arcade.Sprite
         if (Math.floor (this.y) === Math.floor (window.innerHeight - this.displayHeight))
         {
             this.disappear (this) 
-            console.log ()
+            // console.log ()
         }
 
         if (Math.floor (this.x) === Math.floor(window.innerWidth - this.displayWidth))
         {
             this.setVelocity ( -205.5 , 205.5 )
 
-            console.log("xpos", this.x)
+            // console.log("xpos", this.x)
         }
         // this.move()
         // console.log("xpo2s", this.x)

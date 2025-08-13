@@ -28,7 +28,7 @@ export default class PlateORice extends Physics.Arcade.Sprite
         {
             this.disappear (this)
             // this.gameObjectOutOfBound(this)
-            console.log("bottom")
+            // console.log("bottom")
         }
 
         // this.move ()

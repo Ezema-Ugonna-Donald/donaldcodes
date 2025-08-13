@@ -21,7 +21,7 @@ export default function Navbar() {
                 </Link>
                 
                 <div className="ml-96 pointer md:ml-32 sm:ml-24">
-                        <img src="/assets/icons/ug-menu.png" onMouseOver={() => setMenuVisible(!isMenuVisible)} alt="Menu" className="w-[5.5em] mt-[1rem] transition-[scale] delay-150 hover:scale-[1.23] hover:-translate-x-[20px]" />
+                        <img src="/assets/icons/ug-menu.png" onClick={() => setMenuVisible(!isMenuVisible)} alt="Menu" className="w-[5.5em] mt-[1rem] transition-[scale] delay-150 hover:scale-[1.23] hover:-translate-x-[20px]" />
                 </div>
             </div>
             <Menu isMenuVisible={isMenuVisible} />

@@ -16,6 +16,9 @@ export default class HomeScene extends Scene
 
     private activeRoute: any
 
+    public screenW: any
+    public screenH: any
+
     constructor ()
     {
         super ("Home")
@@ -30,6 +33,11 @@ export default class HomeScene extends Scene
     preload ()
     {
         this.cameras.main.setBackgroundColor ("#000000")
+
+        this.screenW = Number (window.innerWidth)
+        this.screenH = Number (window.innerHeight / 2)
+        // this.cameras.main.setBounds(0, 0, this.screenW, this.screenH / 2);
+        // this.cameras.main.setZoom(1);
     }
 
     create ()
@@ -37,12 +45,12 @@ export default class HomeScene extends Scene
         // this.game.events.on ("postupdate", (time, el) => {
             // console.log (window.history.state.prvUrl, "is undefined?")
         // })
-
+        
         // D.E.U.S.
         this.input.setDefaultCursor ("url(/assets/hotplates/cursor/plateORice.cur), pointer")
 
         this.title = this.add.text ((window.innerWidth / 2) * 0.347, (window.innerHeight / 2) * 0.227, "Hot Plates").setStyle ({
-            fontSize: "6em",
+            fontSize: this.screenW < 768 ? "3em" : "6em",
             fill: "#fff",
             fontFamily: "Calibri",
             strokeThickness: "3"
@@ -54,7 +62,7 @@ export default class HomeScene extends Scene
         this.menuContainer.fillRect ((window.innerWidth / 2) * 0.357, (window.innerHeight / 2) * 0.527, (window.innerWidth / 2) * 1.261, (window.innerHeight / 2) * 1.101)
 
         this.menuSelect000 = this.add.text ((window.innerWidth / 2) * 0.467, (window.innerHeight / 2) * 0.597, "Single Player").setStyle ({
-            fontSize: "5em",
+            fontSize: this.screenW < 768 ? "2.5em" : "5em",
             fill: "#ffff0f",
             fontFamily: "Calibri",
             padding: {
@@ -76,7 +84,8 @@ export default class HomeScene extends Scene
 
         this.menuHR000 = this.add.graphics ()
         this.menuHR000.fillStyle (0xFF0FF8, 1)
-        this.menuHR000.fillRect ((window.innerWidth / 2) * 0.417, (window.innerHeight / 2) * 0.792, (window.innerWidth / 2) * 1.134, (window.innerHeight / 2) * 0.015)
+        this.menuHR000.fillRect ((window.innerWidth / 2) * 0.417, this.screenW < 768 ? this.menuSelect000.y + 28 : this.menuSelect000.y + 58, (window.innerWidth / 2) * 1.134, (window.innerHeight / 2) * 0.015)
+        // this.menuHR000.fillRect ((window.innerWidth / 2) * 0.417, (window.innerHeight / 2) * 0.792, (window.innerWidth / 2) * 1.134, (window.innerHeight / 2) * 0.015)
 
         // this.menuSelect001 = this.add.text ((window.innerWidth / 2) * 0.467, (window.innerHeight / 2) * 0.867, "Multi Player").setStyle ({
         //     fontSize: "5em",
@@ -96,12 +105,12 @@ export default class HomeScene extends Scene
         //     this.scene.start ("MultiPSelect")
         // })
 
-        this.menuHR001 = this.add.graphics ()
-        this.menuHR001.fillStyle (0xFF0FF8, 1)
-        this.menuHR001.fillRect ((window.innerWidth / 2) * 0.417, (window.innerHeight / 2) * 1.062, (window.innerWidth / 2) * 1.134, (window.innerHeight / 2) * 0.015)
+        // this.menuHR001 = this.add.graphics ()
+        // this.menuHR001.fillStyle (0xFF0FF8, 1)
+        // this.menuHR001.fillRect ((window.innerWidth / 2) * 0.417, (window.innerHeight / 2) * 1.062, (window.innerWidth / 2) * 1.134, (window.innerHeight / 2) * 0.015)
 
         this.menuSelect002 = this.add.text ((window.innerWidth / 2) * 0.467, (window.innerHeight / 2) * 1.137, "Instructions").setStyle ({
-            fontSize: "5em",
+            fontSize: this.screenW < 768 ? "2.5em" : "5em",
             fill: "#ffff0f",
             fontFamily: "Calibri",
             padding: {
@@ -116,7 +125,8 @@ export default class HomeScene extends Scene
 
         this.menuHR001 = this.add.graphics ()
         this.menuHR001.fillStyle (0xFF0FF8, 1)
-        this.menuHR001.fillRect ((window.innerWidth / 2) * 0.417, (window.innerHeight / 2) * 1.342, (window.innerWidth / 2) * 1.134, (window.innerHeight / 2) * 0.015)
+        this.menuHR001.fillRect ((window.innerWidth / 2) * 0.417, this.screenW < 768 ? this.menuSelect002.y + 28 : this.menuSelect002.y + 58, (window.innerWidth / 2) * 1.134, (window.innerHeight / 2) * 0.015)
+        // this.menuHR001.fillRect ((window.innerWidth / 2) * 0.417, (window.innerHeight / 2) * 1.342, (window.innerWidth / 2) * 1.134, (window.innerHeight / 2) * 0.015)
 
         // this.menuSelect003 = this.add.text ((window.innerWidth / 2) * 0.467, (window.innerHeight / 2) * 1.407, "<= Go Back").setStyle ({
         //     fontSize: "5em",

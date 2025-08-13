@@ -55,4 +55,4 @@ export function Planet(props: JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('./models/planet.glb')
+useGLTF.preload('/models/planet.glb')

@@ -27,7 +27,7 @@ export default class PlatesORice extends Physics.Arcade.Group
 
             this.add (this.goodPlates)
 
-            console.log ("good food")
+            // console.log ("good food")
         }
     }
 
@@ -56,7 +56,7 @@ export default class PlatesORice extends Physics.Arcade.Group
 
             // this.scene.events.emit ("Good Food")
 
-            console.log ("vanish")
+            // console.log ("vanish")
         }
     }
 }

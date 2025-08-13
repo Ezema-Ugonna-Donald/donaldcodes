@@ -1,5 +1,5 @@
 import { Scene } from "phaser"
-import loadImg from "assets/logo/donaldcodesLogo.jpg"
+// import loadImg from "assets/logo/donaldcodesLogo.jpg"
 
 export default class BootScene extends Scene
 {
