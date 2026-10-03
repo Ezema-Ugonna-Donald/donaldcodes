@@ -3,6 +3,11 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./layout/clientLayout";
 
+// @next-codemod-ignore Cache Components adoption: this segment temporarily allows blocking.
+// Remove this opt-out after verifying the segment passes validation without it.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+// export const instant = false;
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

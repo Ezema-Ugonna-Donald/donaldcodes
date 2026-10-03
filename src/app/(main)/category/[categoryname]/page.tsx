@@ -2,9 +2,17 @@ import Posts from "@/app/(main)/components/category/posts"
 import Ad from "@/app/(main)/components/home/experience/landing/ad"
 import Sidearea from "@/app/(main)/components/home/experience/landing/sidearea"
 
-export default function PostsByCategories({params}: {
-    params: { categoryname: string }
-}) {
+// @next-codemod-ignore Cache Components adoption: this segment temporarily allows blocking.
+// Remove this opt-out after verifying the segment passes validation without it.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
+export default async function PostsByCategories(
+    props: {
+        params: Promise<{ categoryname: string }>
+    }
+) {
+    const params = await props.params;
     return (
         <main className="bg-black">
             <article className="w-screen align-bottom text-center mt-24">

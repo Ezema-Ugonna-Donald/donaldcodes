@@ -1,6 +1,6 @@
 "use client"
 
-import { FormEvent, useEffect, useState } from "react"
+import { FormEvent, useEffect, useState, use } from "react";
 import axios from "@/app/(main)/api/axios"
 import { CKEditor } from "@ckeditor/ckeditor5-react"
 import Editor from "../../../../../../ckeditor5/build/ckeditor";
@@ -45,9 +45,12 @@ const s3Client = new S3Client({
     }
 })
 
-export default function EditPost({params}: {
-    params: { postId: string }
-}) {
+export default function EditPost(
+    props: {
+        params: Promise<{ postId: string }>
+    }
+) {
+    const params = use(props.params);
     const [title, setTitle] = useState<string>("")
     const [cat, setCat] = useState<string>("")
     const [postImage, setPostImage] = useState<File | null>(null)
@@ -104,7 +107,7 @@ export default function EditPost({params}: {
         {
             console.error(error)
         }
-    } 
+    }
 
     const getCategories = async () => {
         try

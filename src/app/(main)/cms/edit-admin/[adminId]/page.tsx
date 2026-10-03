@@ -1,6 +1,6 @@
 "use client"
 
-import { FormEvent, useEffect, useState } from "react"
+import { FormEvent, useEffect, useState, use } from "react";
 // import axios from "@/app/(main)/api/axios"
 import { useRouter } from "next/navigation"
 import useAxiosPrivate from "@/app/(main)/hooks/useAxiosPrivate"
@@ -15,9 +15,12 @@ type User = {
     created_at: string
 }
 
-export default function EditAdmin({ params }: {
-    params: { adminId: string }
-}) {
+export default function EditAdmin(
+    props: {
+        params: Promise<{ adminId: string }>
+    }
+) {
+    const params = use(props.params);
     const { push } = useRouter()
     const [name, setName] = useState<string>("")
     const [email, setEmail] = useState<string>("")
@@ -32,7 +35,7 @@ export default function EditAdmin({ params }: {
         created_by: "",
         created_at: ""
     })
-    
+
     const ADMIN_URL: string = "/users/admin"
     // const ADMIN_GET_URL: string = "/users/admin"
     const axiosPrivate = useAxiosPrivate()
@@ -93,7 +96,7 @@ export default function EditAdmin({ params }: {
 
         fetchData()
     }, [])
-    
+
     return (
         <section className="p-8">
             <h1 className="font-[Lato-Bold] text-xl">Edit Admin</h1>

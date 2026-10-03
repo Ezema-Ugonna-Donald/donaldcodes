@@ -1,5 +1,4 @@
 // "use client"
-import { Scroll } from "@react-three/drei";
 import Ad from "@/app/(main)/components/home/experience/landing/ad";
 import Posts from "@/app/(main)/components/home/experience/landing/posts";
 import SideArea from "@/app/(main)/components/home/experience/landing/sidearea";
@@ -7,7 +6,6 @@ import TextType from '@/app/(main)/components/home/experience/landing/banner/tex
 
 export default function Landing () {
     return (
-        <Scroll html>
           <article className="w-screen align-bottom text-center mt-96">
             <section className="">
               <div className="w-full text-center font-[Montserrat-Bold] text-white">
@@ -33,6 +31,5 @@ export default function Landing () {
               </div>
             </section>
         </article>
-    </Scroll>
     )
 }

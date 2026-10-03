@@ -5,7 +5,7 @@ Command: npx gltfjsx@6.2.16 public/models/planet.glb -t
 
 "use client"
 import * as THREE from 'three'
-import React, { useRef } from 'react'
+import React, { useRef, type JSX } from 'react';
 import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 import { useFrame } from '@react-three/fiber'

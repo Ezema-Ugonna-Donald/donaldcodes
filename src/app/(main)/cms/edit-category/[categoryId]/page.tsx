@@ -1,6 +1,6 @@
 "use client"
 
-import { FormEvent, useState, useEffect } from "react"
+import { FormEvent, useState, useEffect, use } from "react";
 import axios from "@/app/(main)/api/axios"
 import { useRouter } from "next/navigation"
 import useAxiosPrivate from "@/app/(main)/hooks/useAxiosPrivate"
@@ -22,9 +22,12 @@ type Category = {
     user: User
 }
 
-export default function EditCategory({params}: {
-    params: { categoryId: string }
-}) {
+export default function EditCategory(
+    props: {
+        params: Promise<{ categoryId: string }>
+    }
+) {
+    const params = use(props.params);
     const { push } = useRouter()
     const [cat, setCat] = useState<string>("")
     const [success, setSuccess] = useState<boolean>(false)
@@ -99,7 +102,7 @@ export default function EditCategory({params}: {
 
         fetchData()
     }, [])
-    
+
     return (
         <section className="p-8">
             <h1 className="font-[Lato-Bold] text-xl">Edit Category</h1>

@@ -1,6 +1,6 @@
 "use client"
 import { Canvas } from "@react-three/fiber";
-import Experience from "@/app/(main)/components/home/experience/experience";
+import ExperienceClient from "@/app/(main)/components/home/experience/experience";
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
         fov: 14,
         position: [1.19, 11.56, 1.19]
       }}>
-        <Experience />
+        <ExperienceClient />
       </Canvas>
       
     </main>

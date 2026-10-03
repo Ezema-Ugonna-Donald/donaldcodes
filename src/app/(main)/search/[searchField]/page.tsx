@@ -2,9 +2,17 @@ import Ad from "@/app/(main)/components/home/experience/landing/ad";
 import Sidearea from "@/app/(main)/components/home/experience/landing/sidearea";
 import Posts from "@/app/(main)/components/search/posts";
 
-export default function PostsBySearch({params}: {
-    params: { searchField: string }
-}) {
+// @next-codemod-ignore Cache Components adoption: this segment temporarily allows blocking.
+// Remove this opt-out after verifying the segment passes validation without it.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
+export default async function PostsBySearch(
+    props: {
+        params: Promise<{ searchField: string }>
+    }
+) {
+    const params = await props.params;
     return (
         <main className="bg-black">
             <article className="w-screen align-bottom text-center mt-24">

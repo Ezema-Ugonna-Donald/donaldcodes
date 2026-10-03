@@ -1,12 +1,16 @@
-"use client"
+"use client";
+import { use } from "react";
 import Ad from "@/app/(main)/components/home/experience/landing/ad"
 import Posts from "@/app/(main)/components/show/posts"
 import Comments from "@/app/(main)/components/show/comments"
 import SideArea from "@/app/(main)/components/home/experience/landing/sidearea"
 
-export default function View({params}: {
-    params: { postId: string }
-}) {
+export default function View(
+    props: {
+        params: Promise<{ postId: string }>
+    }
+) {
+    const params = use(props.params);
     return (
         <main className="bg-black">
             <article className="w-screen align-bottom text-center mt-24">
